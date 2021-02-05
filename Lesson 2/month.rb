@@ -5,6 +5,9 @@ month = gets.chomp.to_i
 puts "Введи год"
 year = gets.chomp.to_i
 
-day_of_the_year = Time.new(year,month,day).strftime("%j")
+days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+days[1] += 1 if (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)
 
-puts "Это #{day_of_the_year} день года"
+day_of_year = day + days.take(month - 1).sum
+
+puts "Это #{day_of_year} день года"
